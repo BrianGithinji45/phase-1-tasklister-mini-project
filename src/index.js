@@ -1,27 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.getElementById('create-task-form');
-    const taskList = document.getElementById('tasks');
-
-    form.addEventListener('submit', (event) => {
-        event.preventDefault();
-        
-        // Step 3 - gather data
-        const task = event.target['new-task-description'].value;
-
-        // Call buildToDo
-        buildToDo(task);
-        
-        // Clear form after submit (good practice)
-        form.reset();
-    });
-
-    // Step 4 - Within buildToDo
-    function buildToDo(todo) {
-        // Create a new li element
-        const li = document.createElement('li');
-        // Add the task as the textContent
-        li.textContent = todo;
-        // Append the li element to the task list
-        taskList.appendChild(li);
-    }
+  const form = document.getElementById('create-task-form');
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const task = document.getElementById('new-task-description').value;
+    buildToDo(task);
+    form.reset();
+  });
 });
+
+
+function buildToDo(todo) {
+  const li = document.createElement('li');
+  li.textContent = todo;
+  document.getElementById('tasks').appendChild(li);
+}
